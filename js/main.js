@@ -14,3 +14,9 @@ const fortyfiveSecondTimer = document.getElementById("fortfive-second-timer");
 const tenSeconds = 10;
 const fifteenSeconds = 15;
 const fortyfiveSeconds = 45;
+
+// Exercise array - 8 workouts
+const exerciseArr = ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8"];
+// Random exercise
+let randomExercise = Math.trunc(Math.random(exerciseArr.length) + 1);
+console.log(randomExercise);
