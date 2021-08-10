@@ -41,7 +41,7 @@ startBtn.addEventListener("click", function () {
 
   // 10 second countdown to prep for exercise -- maybe separate functions for the timers? -- add a progress bar? look into
   // use the timer countdown variables and declare a function
-  // if the timer is less than or equal to the specific time, hide the countdown
+  // if the timer is less than or equal to 0, hide the countdown
   // else show the next countdown
   // decrement the timer
 
