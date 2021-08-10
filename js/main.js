@@ -34,4 +34,18 @@ startBtn.addEventListener("click", function () {
   // Random exercise for user
   exerciseName.textContent = exerciseArr[randomExercise];
   exerciseName.classList.remove("hidden");
+
+  // Start message
+  startMessage.classList.remove("hidden");
+  startMessage.textContent = "Starts in...";
+
+  // 10 second countdown to prep for exercise -- maybe separate functions for the timers? -- add a progress bar? look into
+  // use the timer countdown variables and declare a function
+  // if the timer is less than or equal to the specific time, hide the countdown
+  // else show the next countdown
+  // decrement the timer
+
+  // 45 second countdown to do exercise
+
+  // 15 second countdown to rest
 });
