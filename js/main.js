@@ -5,6 +5,7 @@ const introMessage = document.getElementById("intro-message");
 const startBtn = document.getElementById("start-btn");
 const againBtn = document.getElementById("again-btn");
 const startMessage = document.getElementById("start-message");
+const exerciseName = document.getElementById("exercise-name");
 // Countdown times for 10 seconds, 45 seconds and 15 seconds (not sure if i need all of them tbd)
 const tenSecondTimer = document.getElementById("ten-second-timer");
 const fifteenSecondTimer = document.getElementById("fifteen-second-timer");
@@ -22,3 +23,15 @@ console.log(exerciseArr.length);
 let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
 console.log(randomExercise);
 console.log(exerciseArr[randomExercise]);
+
+// Start button - what happens when it is clicked?
+startBtn.addEventListener("click", function () {
+  console.log("start button was clicked");
+
+  startBtn.classList.add("hidden");
+  introMessage.classList.add("hidden");
+
+  // Random exercise for user
+  exerciseName.textContent = exerciseArr[randomExercise];
+  exerciseName.classList.remove("hidden");
+});
