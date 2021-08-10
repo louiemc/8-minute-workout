@@ -8,18 +8,25 @@
   </head>
   <body>
     <main class="container">
-      <section class="exercise-text">
-        <h1 id="workout-intro">
+      <section class="exercise-text inner-container">
+        <h1 id="intro-message">
           Workout for only 8 mintues (maybe 10 minutes) a day!
         </h1>
-        <h1 id="exercise-name">Squats</h1>
-        <p id="starts-in-text">Starts in...</p>
+        <!-- Exercise name -->
+        <h1 id="exercise-name" class="hidden">Squats</h1>
+        <p id="start-message" class="hidden">Starts in...</p>
       </section>
 
-      <section class="">
+      <section class="inner-container">
+        <!-- Start button -->
         <button id="start-btn">Start</button>
-        <p id="countdown-clock"></p>
-        <button id="again-btn">Workout again</button>
+        <p id="countdown-clock" class="hidden">13</p>
+        <!-- 10, 15, 45 second countdown times (Come back to this) -->
+        <p id="ten-second-timer" class="hidden">13</p>
+        <p id="fifteen-second-timer" class="hidden">13</p>
+        <p id="fortyfive-second-timer" class="hidden">13</p>
+        <!-- Again button -->
+        <button id="again-btn" class="hidden">Again</button>
       </section>
     </main>
   </body>
