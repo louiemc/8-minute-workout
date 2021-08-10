@@ -19,5 +19,6 @@ const fortyfiveSeconds = 45;
 const exerciseArr = ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8"];
 console.log(exerciseArr.length);
 // Random exercise
-let randomExercise = Math.trunc(Math.random() * exerciseArr.length) + 1;
+let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
 console.log(randomExercise);
+console.log(exerciseArr[randomExercise]);
