@@ -40,21 +40,113 @@ startBtn.addEventListener("click", function () {
   startMessage.classList.remove("hidden");
   startMessage.textContent = "Starts in...";
 
-  const countdownSeconds = setInterval(countdownTimer, 1000);
+  // 10 Second Countdown Timer
+  const countdownTenSeconds = setInterval(countdownTenSecondsTimer, 1000);
   // console.log(typeof countdownSeconds); // number
-  function countdownTimer() {
+  function countdownTenSecondsTimer() {
     if (tenSeconds < 0) {
-      clearInterval(countdownSeconds);
-      return; // countdownSeconds ended, so do something...come back to this
+      clearInterval(countdownTenSeconds);
+      document.getElementById("progressBar10").classList.add("hidden");
+
+      // 45 Second Countdown Timer
+      const countdownFortyfiveSeconds = setInterval(
+        countdownFortyfiveSecondsTimer,
+        1000
+      );
+      // console.log(typeof countdownSeconds); // number
+      function countdownFortyfiveSecondsTimer() {
+        if (fortyfiveSeconds < 0) {
+          clearInterval(countdownFortyfiveSeconds);
+          document.getElementById("progressBar45").classList.add("hidden");
+
+          // 15 Second Countdown Timer
+          const countdownFifteenSeconds = setInterval(
+            countdownFifteenSecondsTimer,
+            1000
+          );
+          // console.log(typeof countdownSeconds); // number
+          function countdownFifteenSecondsTimer() {
+            if (fifteenSeconds < 0) {
+              clearInterval(countdownFifteenSeconds);
+              document.getElementById("progressBar15").classList.add("hidden");
+              countdownTenSecondsTimer(tenSeconds);
+            } else {
+              console.log(fifteenSeconds + " seconds");
+              // console.log(typeof seconds); // number
+              countdownClock.classList.remove("hidden");
+              countdownClock.textContent = fifteenSeconds + " seconds";
+              document
+                .getElementById("progressBar15")
+                .classList.remove("hidden");
+              document.getElementById("progressBar15").value =
+                15 - fifteenSeconds;
+            }
+            fifteenSeconds--;
+          }
+          countdownFifteenSecondsTimer(fifteenSeconds);
+        } else {
+          console.log(fortyfiveSeconds + " seconds");
+          // console.log(typeof seconds); // number
+          countdownClock.classList.remove("hidden");
+          countdownClock.textContent = fortyfiveSeconds + " seconds";
+          document.getElementById("progressBar45").classList.remove("hidden");
+          document.getElementById("progressBar45").value =
+            45 - fortyfiveSeconds;
+        }
+        fortyfiveSeconds--;
+      }
+      countdownFortyfiveSecondsTimer(fortyfiveSeconds);
     } else {
       console.log(tenSeconds + " seconds");
       // console.log(typeof seconds); // number
       countdownClock.classList.remove("hidden");
       countdownClock.textContent = tenSeconds + " seconds";
-      document.getElementById("progressBar").classList.remove("hidden");
-      document.getElementById("progressBar").value = 10 - tenSeconds;
+      document.getElementById("progressBar10").classList.remove("hidden");
+      document.getElementById("progressBar10").value = 10 - tenSeconds;
     }
     tenSeconds--;
   }
-  countdownTimer(tenSeconds);
+  countdownTenSecondsTimer(tenSeconds);
 });
+
+// // 45 Second Countdown Timer
+// const countdownFortyfiveSeconds = setInterval(
+//   countdownFortyfiveSecondsTimer,
+//   1000
+// );
+// // console.log(typeof countdownSeconds); // number
+// function countdownFortyfiveSecondsTimer() {
+//   if (fortyfiveSeconds < 0) {
+//     clearInterval(countdownFortyfiveSeconds);
+//     document.getElementById("progressBar45").classList.add("hidden");
+//   } else {
+//     console.log(fortyfiveSeconds + " seconds");
+//     // console.log(typeof seconds); // number
+//     countdownClock.classList.remove("hidden");
+//     countdownClock.textContent = fortyfiveSeconds + " seconds";
+//     document.getElementById("progressBar45").classList.remove("hidden");
+//     document.getElementById("progressBar45").value = 45 - fortyfiveSeconds;
+//   }
+//   fortyfiveSeconds--;
+// }
+// countdownFortyfiveSecondsTimer(fortyfiveSeconds);
+
+// // 15 Second Countdown Timer
+// const countdownFifteenSeconds = setInterval(countdownFifteenSecondsTimer, 1000);
+// // console.log(typeof countdownSeconds); // number
+// function countdownFifteenSecondsTimer() {
+//   if (fifteenSeconds < 0) {
+//     clearInterval(countdownFifteenSeconds);
+//     document.getElementById("progressBar15").classList.add("hidden");
+//     countdownTenSecondsTimer(tenSeconds);
+//   } else {
+//     console.log(fifteenSeconds + " seconds");
+//     // console.log(typeof seconds); // number
+//     countdownClock.classList.remove("hidden");
+//     countdownClock.textContent = fifteenSeconds + " seconds";
+//     document.getElementById("progressBar15").classList.remove("hidden");
+//     document.getElementById("progressBar15").value = 15 - fifteenSeconds;
+//   }
+//   fifteenSeconds--;
+// }
+// countdownFifteenSecondsTimer(fifteenSeconds);
