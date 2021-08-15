@@ -10,6 +10,7 @@ const exerciseName = document.getElementById("exercise-name");
 const tenSecondTimer = document.getElementById("ten-second-timer");
 const fifteenSecondTimer = document.getElementById("fifteen-second-timer");
 const fortyfiveSecondTimer = document.getElementById("fortfive-second-timer");
+const countdownClock = document.getElementById("countdown-clock");
 
 // Timer countdowns
 const tenSeconds = 10;
@@ -41,6 +42,15 @@ startBtn.addEventListener("click", function () {
 
   // 10 second countdown to prep for exercise -- maybe separate functions for the timers? -- add a progress bar? look into
   // use the timer countdown variables and declare a function
+  // const tenSecondCountdown = setInterval(function (tenSeconds) {
+  //   if (tenSeconds <= 0) {
+  //     clearInterval(tenSecondCountdown);
+  //     // return;
+  //   } else {
+  //     countdownClock.textContent = tenSeconds + " seconds";
+  //   }
+  //   tenSeconds--;
+  // }, 1000);
   // if the timer is less than or equal to 0, hide the countdown
   // else show the next countdown
   // decrement the timer
@@ -48,4 +58,18 @@ startBtn.addEventListener("click", function () {
   // 45 second countdown to do exercise
 
   // 15 second countdown to rest
+
+  const countdownSeconds = setInterval(countdownTimer, 1000);
+  function countdownTimer(seconds) {
+    if (seconds <= 0) {
+      clearInterval(countdownSeconds);
+      return; // countdownSeconds ended, so do something...come back to this
+    } else {
+      console.log(seconds + " seconds");
+      countdownClock.classList.remove("hidden");
+      countdownClock.textContent = seconds + " seconds";
+    }
+    seconds--;
+  }
+  countdownTimer(tenSeconds);
 });
