@@ -13,9 +13,9 @@ const fortyfiveSecondTimer = document.getElementById("fortfive-second-timer");
 const countdownClock = document.getElementById("countdown-clock");
 
 // Timer countdowns
-const tenSeconds = 10;
-const fifteenSeconds = 15;
-const fortyfiveSeconds = 45;
+let tenSeconds = 10;
+let fifteenSeconds = 15;
+let fortyfiveSeconds = 45;
 
 // Exercise array - 8 workouts
 const exerciseArr = ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8"];
@@ -40,36 +40,21 @@ startBtn.addEventListener("click", function () {
   startMessage.classList.remove("hidden");
   startMessage.textContent = "Starts in...";
 
-  // 10 second countdown to prep for exercise -- maybe separate functions for the timers? -- add a progress bar? look into
-  // use the timer countdown variables and declare a function
-  // const tenSecondCountdown = setInterval(function (tenSeconds) {
-  //   if (tenSeconds <= 0) {
-  //     clearInterval(tenSecondCountdown);
-  //     // return;
-  //   } else {
-  //     countdownClock.textContent = tenSeconds + " seconds";
-  //   }
-  //   tenSeconds--;
-  // }, 1000);
-  // if the timer is less than or equal to 0, hide the countdown
-  // else show the next countdown
-  // decrement the timer
-
-  // 45 second countdown to do exercise
-
-  // 15 second countdown to rest
-
   const countdownSeconds = setInterval(countdownTimer, 1000);
-  function countdownTimer(seconds) {
-    if (seconds <= 0) {
+  // console.log(typeof countdownSeconds); // number
+  function countdownTimer() {
+    if (tenSeconds < 0) {
       clearInterval(countdownSeconds);
       return; // countdownSeconds ended, so do something...come back to this
     } else {
-      console.log(seconds + " seconds");
+      console.log(tenSeconds + " seconds");
+      // console.log(typeof seconds); // number
       countdownClock.classList.remove("hidden");
-      countdownClock.textContent = seconds + " seconds";
+      countdownClock.textContent = tenSeconds + " seconds";
+      document.getElementById("progressBar").classList.remove("hidden");
+      document.getElementById("progressBar").value = 10 - tenSeconds;
     }
-    seconds--;
+    tenSeconds--;
   }
   countdownTimer(tenSeconds);
 });
