@@ -39,6 +39,7 @@ startBtn.addEventListener("click", function () {
   // Start message
   startMessage.classList.remove("hidden");
   startMessage.textContent = "Starts in...";
+  // note: once the 10 second countdown is done, the startMessage will disappear
 
   // 10 Second Countdown Timer
   const countdownTenSeconds = setInterval(countdownTenSecondsTimer, 1000);
@@ -47,6 +48,7 @@ startBtn.addEventListener("click", function () {
     if (tenSeconds < 0) {
       clearInterval(countdownTenSeconds);
       document.getElementById("progressBar10").classList.add("hidden");
+      startMessage.classList.add("hidden");
 
       // 45 Second Countdown Timer
       const countdownFortyfiveSeconds = setInterval(
