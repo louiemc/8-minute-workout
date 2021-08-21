@@ -8,14 +8,18 @@ const timeMessage = document.getElementById("time-message");
 const exerciseName = document.getElementById("exercise-name");
 // Countdown times for 10 seconds, 45 seconds and 15 seconds (not sure if i need all of them tbd)
 const tenSecondTimer = document.getElementById("ten-second-timer");
-const fifteenSecondTimer = document.getElementById("fifteen-second-timer");
+// const fifteenSecondTimer = document.getElementById("fifteen-second-timer");
 const fortyfiveSecondTimer = document.getElementById("fortfive-second-timer");
 const countdownClock = document.getElementById("countdown-clock");
+// Progress bar
+const progressBar10 = document.getElementById("progress-bar-10");
+const progressBar45 = document.getElementById("progress-bar-45");
+// const progressBar15 = document.getElementById("progress-bar-15");
 
 // Timer countdowns
-let tenSeconds = 10;
-let fifteenSeconds = 15;
-let fortyfiveSeconds = 45;
+let restTime = 10;
+// let fifteenSeconds = 15;
+let workoutTime = 45;
 
 // Exercise array - 8 workouts
 const exerciseArr = ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8"];
@@ -25,6 +29,23 @@ let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
 console.log(randomExercise);
 console.log(exerciseArr[randomExercise]);
 
+// Time function - promise
+function timer(count) {
+  console.log(count);
+
+  return new Promise((resolve) => {
+    let counter = setInterval(() => {
+      if (count < 0) {
+        clearInterval(counter);
+        resolve();
+        return;
+      } else {
+        timeMessage.textContent = count;
+      }
+      count--;
+    }, 1000);
+  });
+}
 // Start button - what happens when it is clicked?
 startBtn.addEventListener("click", function () {
   console.log("start button was clicked");
@@ -39,118 +60,11 @@ startBtn.addEventListener("click", function () {
   // Start message
   timeMessage.classList.remove("hidden");
   timeMessage.textContent = "Starts in...";
-  // note: once the 10 second countdown is done, the timeMessage will disappear
 
-  // 10 Second Countdown Timer
-  const countdownTenSeconds = setInterval(countdownTenSecondsTimer, 1000);
-  // console.log(typeof countdownSeconds); // number
-  function countdownTenSecondsTimer() {
-    if (tenSeconds < 0) {
-      clearInterval(countdownTenSeconds);
-      document.getElementById("progressBar10").classList.add("hidden");
-      timeMessage.classList.add("hidden");
+  // for (let i = 0; i < exerciseArr.length; i++) {
+  //   console.log(exerciseArr[i]);
+  // }
 
-      // 45 Second Countdown Timer
-      const countdownFortyfiveSeconds = setInterval(
-        countdownFortyfiveSecondsTimer,
-        1000
-      );
-      // console.log(typeof countdownSeconds); // number
-      function countdownFortyfiveSecondsTimer() {
-        if (fortyfiveSeconds < 0) {
-          clearInterval(countdownFortyfiveSeconds);
-          document.getElementById("progressBar45").classList.add("hidden");
-
-          // 15 Second Countdown Timer
-          const countdownFifteenSeconds = setInterval(
-            countdownFifteenSecondsTimer,
-            1000
-          );
-          // console.log(typeof countdownSeconds); // number
-          function countdownFifteenSecondsTimer() {
-            if (fifteenSeconds < 0) {
-              clearInterval(countdownFifteenSeconds);
-              document.getElementById("progressBar15").classList.add("hidden");
-              countdownTenSecondsTimer(tenSeconds);
-            } else {
-              console.log(fifteenSeconds + " seconds");
-              timeMessage.classList.remove("hidden");
-              timeMessage.textContent = "Rest!";
-              // console.log(typeof seconds); // number
-              countdownClock.classList.remove("hidden");
-              countdownClock.textContent = fifteenSeconds + " seconds";
-              document
-                .getElementById("progressBar15")
-                .classList.remove("hidden");
-              document.getElementById("progressBar15").value =
-                15 - fifteenSeconds;
-            }
-            fifteenSeconds--;
-          }
-          countdownFifteenSecondsTimer(fifteenSeconds);
-        } else {
-          console.log(fortyfiveSeconds + " seconds");
-          // console.log(typeof seconds); // number
-          countdownClock.classList.remove("hidden");
-          countdownClock.textContent = fortyfiveSeconds + " seconds";
-          document.getElementById("progressBar45").classList.remove("hidden");
-          document.getElementById("progressBar45").value =
-            45 - fortyfiveSeconds;
-        }
-        fortyfiveSeconds--;
-      }
-      countdownFortyfiveSecondsTimer(fortyfiveSeconds);
-    } else {
-      console.log(tenSeconds + " seconds");
-      // console.log(typeof seconds); // number
-      countdownClock.classList.remove("hidden");
-      countdownClock.textContent = tenSeconds + " seconds";
-      document.getElementById("progressBar10").classList.remove("hidden");
-      document.getElementById("progressBar10").value = 10 - tenSeconds;
-    }
-    tenSeconds--;
-  }
-  countdownTenSecondsTimer(tenSeconds);
+  // Run the timer function for 10, 45 and then 15 (maybe get rid of 15?)
+  timer(restTime).then(() => timer(workoutTime));
 });
-
-// // 45 Second Countdown Timer
-// const countdownFortyfiveSeconds = setInterval(
-//   countdownFortyfiveSecondsTimer,
-//   1000
-// );
-// // console.log(typeof countdownSeconds); // number
-// function countdownFortyfiveSecondsTimer() {
-//   if (fortyfiveSeconds < 0) {
-//     clearInterval(countdownFortyfiveSeconds);
-//     document.getElementById("progressBar45").classList.add("hidden");
-//   } else {
-//     console.log(fortyfiveSeconds + " seconds");
-//     // console.log(typeof seconds); // number
-//     countdownClock.classList.remove("hidden");
-//     countdownClock.textContent = fortyfiveSeconds + " seconds";
-//     document.getElementById("progressBar45").classList.remove("hidden");
-//     document.getElementById("progressBar45").value = 45 - fortyfiveSeconds;
-//   }
-//   fortyfiveSeconds--;
-// }
-// countdownFortyfiveSecondsTimer(fortyfiveSeconds);
-
-// // 15 Second Countdown Timer
-// const countdownFifteenSeconds = setInterval(countdownFifteenSecondsTimer, 1000);
-// // console.log(typeof countdownSeconds); // number
-// function countdownFifteenSecondsTimer() {
-//   if (fifteenSeconds < 0) {
-//     clearInterval(countdownFifteenSeconds);
-//     document.getElementById("progressBar15").classList.add("hidden");
-//     countdownTenSecondsTimer(tenSeconds);
-//   } else {
-//     console.log(fifteenSeconds + " seconds");
-//     // console.log(typeof seconds); // number
-//     countdownClock.classList.remove("hidden");
-//     countdownClock.textContent = fifteenSeconds + " seconds";
-//     document.getElementById("progressBar15").classList.remove("hidden");
-//     document.getElementById("progressBar15").value = 15 - fifteenSeconds;
-//   }
-//   fifteenSeconds--;
-// }
-// countdownFifteenSecondsTimer(fifteenSeconds);
