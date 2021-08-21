@@ -4,7 +4,7 @@
 const introMessage = document.getElementById("intro-message");
 const startBtn = document.getElementById("start-btn");
 const againBtn = document.getElementById("again-btn");
-const startMessage = document.getElementById("start-message");
+const timeMessage = document.getElementById("time-message");
 const exerciseName = document.getElementById("exercise-name");
 // Countdown times for 10 seconds, 45 seconds and 15 seconds (not sure if i need all of them tbd)
 const tenSecondTimer = document.getElementById("ten-second-timer");
@@ -37,9 +37,9 @@ startBtn.addEventListener("click", function () {
   exerciseName.classList.remove("hidden");
 
   // Start message
-  startMessage.classList.remove("hidden");
-  startMessage.textContent = "Starts in...";
-  // note: once the 10 second countdown is done, the startMessage will disappear
+  timeMessage.classList.remove("hidden");
+  timeMessage.textContent = "Starts in...";
+  // note: once the 10 second countdown is done, the timeMessage will disappear
 
   // 10 Second Countdown Timer
   const countdownTenSeconds = setInterval(countdownTenSecondsTimer, 1000);
@@ -48,7 +48,7 @@ startBtn.addEventListener("click", function () {
     if (tenSeconds < 0) {
       clearInterval(countdownTenSeconds);
       document.getElementById("progressBar10").classList.add("hidden");
-      startMessage.classList.add("hidden");
+      timeMessage.classList.add("hidden");
 
       // 45 Second Countdown Timer
       const countdownFortyfiveSeconds = setInterval(
@@ -74,6 +74,8 @@ startBtn.addEventListener("click", function () {
               countdownTenSecondsTimer(tenSeconds);
             } else {
               console.log(fifteenSeconds + " seconds");
+              timeMessage.classList.remove("hidden");
+              timeMessage.textContent = "Rest!";
               // console.log(typeof seconds); // number
               countdownClock.classList.remove("hidden");
               countdownClock.textContent = fifteenSeconds + " seconds";
