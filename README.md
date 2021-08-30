@@ -22,3 +22,5 @@
 
 - Water
 - Free weights (optional with workouts)
+
+# Not DRY --- work through it and come back
