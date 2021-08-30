@@ -34,9 +34,9 @@ const exerciseArr = [
 ];
 // console.log(exerciseArr.length);
 // Random exercise
-let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
+// let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
 // console.log(randomExercise);
-console.log(exerciseArr[randomExercise]);
+// console.log(exerciseArr[randomExercise]);
 
 // Time function - promise
 function timer(count) {
@@ -56,6 +56,7 @@ function timer(count) {
     }, 1000);
   });
 }
+
 // Start button - what happens when it is clicked?
 startBtn.addEventListener("click", function () {
   console.log("start button was clicked");
@@ -63,20 +64,89 @@ startBtn.addEventListener("click", function () {
   startBtn.classList.add("hidden");
   introMessage.classList.add("hidden");
 
-  // Random exercise for user
-  exerciseName.textContent = exerciseArr[randomExercise];
-  exerciseName.classList.remove("hidden");
-
-  // Start message
-  timeMessage.classList.remove("hidden");
-  timeMessage.textContent = "Get ready...";
-
-  // for (let i = 0; i < exerciseArr.length; i++) {
-  //   console.log(exerciseArr[i]);
-  // }
-
-  // Run the timer function for 10, 45 and then 15 (maybe get rid of 15?)
-  timer(restTime, (timeMessage.textContent = "Get ready...")).then(() =>
-    timer(workoutTime, (timeMessage.textContent = "You can do it!"))
-  );
+  timer(
+    restTime,
+    (timeMessage.textContent = "Get ready..."),
+    (exerciseName.textContent = exerciseArr[0])
+  )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[1])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[2])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[3])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[4])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[5])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[6])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(() =>
+      timer(
+        restTime,
+        (timeMessage.textContent = "Get ready..."),
+        (exerciseName.textContent = exerciseArr[7])
+      )
+    )
+    .then(() =>
+      timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+    )
+    .then(
+      () => (
+        (exerciseName.textContent = "Done!"),
+        (timeMessage.textContent = "You did it! Don't forget to cool down!"),
+        countdownClock.classList.add("hidden")
+      )
+    );
 });
