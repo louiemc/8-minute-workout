@@ -2,7 +2,7 @@
 
 # Welcome to the 8 minute workout where you can workout for 8 minutes!
 
-> Full disclosure, I think this will be longer than 8 minutes. It may take a little less than 10 minutes (8 \* (10 seconds + 45 seconds + 15 seconds)).
+> Full disclosure, I think this will be longer than 8 minutes.
 
 ## How it works:
 
@@ -21,4 +21,4 @@
 ## Materials needed:
 
 - Water
-- Free weights
+- Free weights (optional with workouts)
