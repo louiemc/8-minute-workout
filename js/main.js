@@ -22,11 +22,20 @@ let restTime = 10;
 let workoutTime = 45;
 
 // Exercise array - 8 workouts
-const exerciseArr = ["ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8"];
-console.log(exerciseArr.length);
+const exerciseArr = [
+  "Squats",
+  "Lunges",
+  "Push-ups",
+  "Burpees",
+  "High Knees",
+  "Dips",
+  "Crunches",
+  "Plank",
+];
+// console.log(exerciseArr.length);
 // Random exercise
 let randomExercise = Math.trunc(Math.random() * exerciseArr.length);
-console.log(randomExercise);
+// console.log(randomExercise);
 console.log(exerciseArr[randomExercise]);
 
 // Time function - promise
@@ -40,7 +49,8 @@ function timer(count) {
         resolve();
         return;
       } else {
-        timeMessage.textContent = count;
+        countdownClock.classList.remove("hidden");
+        countdownClock.textContent = count;
       }
       count--;
     }, 1000);
@@ -59,12 +69,14 @@ startBtn.addEventListener("click", function () {
 
   // Start message
   timeMessage.classList.remove("hidden");
-  timeMessage.textContent = "Starts in...";
+  timeMessage.textContent = "Get ready...";
 
   // for (let i = 0; i < exerciseArr.length; i++) {
   //   console.log(exerciseArr[i]);
   // }
 
   // Run the timer function for 10, 45 and then 15 (maybe get rid of 15?)
-  timer(restTime).then(() => timer(workoutTime));
+  timer(restTime, (timeMessage.textContent = "Get ready...")).then(() =>
+    timer(workoutTime, (timeMessage.textContent = "You can do it!"))
+  );
 });
