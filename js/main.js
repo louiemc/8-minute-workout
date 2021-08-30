@@ -40,11 +40,11 @@ const exerciseArr = [
 
 // Time function - promise
 function timer(count) {
-  console.log(count);
+  // console.log(count);
 
   return new Promise((resolve) => {
     let counter = setInterval(() => {
-      if (count < 0) {
+      if (count < 1) {
         clearInterval(counter);
         resolve();
         return;
@@ -59,7 +59,7 @@ function timer(count) {
 
 // Start button - what happens when it is clicked?
 startBtn.addEventListener("click", function () {
-  console.log("start button was clicked");
+  // console.log("start button was clicked");
 
   startBtn.classList.add("hidden");
   introMessage.classList.add("hidden");
